@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Stick War Legacy: Campaign and Game Modes Explained</title>
+
+  <meta name="description" content="Explore the Stick War Legacy campaign and game modes, including Missions, Tournament, Endless Deads, difficulty levels, and strategic gameplay.">
+  <meta name="keywords" content="Stick War Legacy, Stick War Legacy campaign, Stick War Legacy game modes, Stick War Legacy Missions, Stick War Legacy Tournament, Endless Deads">
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: #080a14;
+      color: #e9ecff;
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: auto;
+      padding: 0 22px;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0 90px;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(92, 82, 255, .28), transparent 28%),
+        radial-gradient(circle at 85% 25%, rgba(0, 213, 255, .16), transparent 25%),
+        linear-gradient(135deg, #090b18, #10152d 52%, #090b15);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero:before,
+    .hero:after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(118, 132, 255, .12);
+      transform: rotate(45deg);
+    }
+
+    .hero:before {
+      width: 240px;
+      height: 240px;
+      right: -90px;
+      top: 30px;
+    }
+
+    .hero:after {
+      width: 160px;
+      height: 160px;
+      left: -70px;
+      bottom: 10px;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 13px;
+      border: 1px solid rgba(124, 139, 255, .3);
+      background: rgba(89, 101, 255, .08);
+      color: #aeb7ff;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow span {
+      width: 7px;
+      height: 7px;
+      background: #62d9ff;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #62d9ff;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 67px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 23px;
+      max-width: 780px;
+    }
+
+    h1 strong {
+      background: linear-gradient(90deg, #8b8cff, #59ddff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      max-width: 720px;
+      color: #aeb4cf;
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .hero-tags span {
+      padding: 7px 12px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.08);
+      color: #d6daef;
+      font-size: 13px;
+    }
+
+    .logo-panel {
+      position: relative;
+      min-height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-panel:before {
+      content: "";
+      position: absolute;
+      width: 265px;
+      height: 265px;
+      border-radius: 50%;
+      border: 1px dashed rgba(108, 213, 255, .28);
+      box-shadow: 0 0 80px rgba(80, 113, 255, .18);
+    }
+
+    .logo-card {
+      position: relative;
+      width: 235px;
+      min-height: 235px;
+      padding: 28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 30px 70px rgba(0,0,0,.4);
+      backdrop-filter: blur(12px);
+    }
+
+    .logo-card img {
+      width: 175px;
+      max-width: 100%;
+      height: auto;
+      filter: drop-shadow(0 14px 22px rgba(0,0,0,.5));
+    }
+
+    /* CONTENT */
+    main {
+      padding: 65px 0 80px;
+    }
+
+    .intro-box {
+      padding: 28px 30px;
+      margin-bottom: 55px;
+      border-left: 4px solid #777cff;
+      background: linear-gradient(90deg, rgba(108, 117, 255, .10), rgba(255,255,255,.025));
+      border-radius: 0 15px 15px 0;
+      color: #c5cae0;
+    }
+
+    .section {
+      margin-bottom: 65px;
+    }
+
+    .section-label {
+      color: #69dfff;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 7px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.15;
+      margin-bottom: 17px;
+      color: #f6f7ff;
+      letter-spacing: -.8px;
+    }
+
+    h3 {
+      color: #f1f3ff;
+      margin-bottom: 9px;
+      font-size: 20px;
+    }
+
+    p {
+      color: #adb3cb;
+      margin-bottom: 17px;
+    }
+
+    /* CAMPAIGN MAP */
+    .map {
+      position: relative;
+      margin-top: 30px;
+      padding: 35px 25px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 22px;
+      background:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
+        #0d1020;
+      background-size: 38px 38px;
+      overflow: hidden;
+    }
+
+    .map-line {
+      position: absolute;
+      left: 13%;
+      right: 13%;
+      top: 50%;
+      height: 2px;
+      background: linear-gradient(90deg, #636cff, #55dfff);
+      opacity: .45;
+    }
+
+    .map-nodes {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .node {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .node-icon {
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 15px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #151a35;
+      border: 2px solid #7079ff;
+      box-shadow: 0 0 25px rgba(98, 107, 255, .18);
+      font-size: 23px;
+    }
+
+    .node p {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* MODE CARDS */
+    .mode-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .mode-card {
+      position: relative;
+      padding: 28px;
+      min-height: 245px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.09);
+      background: #101426;
+      overflow: hidden;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .mode-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(99, 222, 255, .4);
+    }
+
+    .mode-card:after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      right: -50px;
+      top: -50px;
+      background: rgba(96, 108, 255, .09);
+    }
+
+    .mode-number {
+      font-size: 12px;
+      font-weight: 800;
+      color: #66ddff;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .mode-card p {
+      font-size: 15px;
+    }
+
+    .mode-card ul {
+      padding-left: 20px;
+      color: #aeb5cf;
+      font-size: 14px;
+    }
+
+    /* TABLE */
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 25px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    table {
+      width: 100%;
+      min-width: 650px;
+      border-collapse: collapse;
+      background: #0e1220;
+    }
+
+    th {
+      background: #171c35;
+      color: #dfe3ff;
+      text-align: left;
+      padding: 16px;
+      font-size: 14px;
+    }
+
+    td {
+      padding: 15px 16px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      color: #adb4ca;
+      font-size: 14px;
+    }
+
+    tr:hover td {
+      background: rgba(255,255,255,.025);
+    }
+
+    /* STRATEGY STEPS */
+    .steps {
+      display: grid;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 55px 1fr;
+      gap: 17px;
+      padding: 20px;
+      border-radius: 15px;
+      background: #101426;
+      border: 1px solid rgba(255,255,255,.07);
+    }
+
+    .step-num {
+      width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #676fff, #4dcbe7);
+      color: white;
+      font-weight: 900;
+    }
+
+    .step p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    /* LINK PANEL */
+    .resource-panel {
+      padding: 30px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #131934, #101322);
+      border: 1px solid rgba(105, 216, 255, .18);
+      margin-top: 28px;
+    }
+
+    .resource-links {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .resource-link {
+      display: block;
+      padding: 17px 18px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.07);
+      color: #cdd3ec;
+      font-weight: 700;
+      font-size: 14px;
+      transition: .2s ease;
+    }
+
+    .resource-link:hover {
+      border-color: #5edcff;
+      color: #69ddff;
+      transform: translateX(3px);
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: grid;
+      gap: 13px;
+      margin-top: 25px;
+    }
+
+    details {
+      background: #101426;
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 14px;
+      padding: 18px 20px;
+    }
+
+    summary {
+      cursor: pointer;
+      color: #e7eaff;
+      font-weight: 700;
+    }
+
+    details p {
+      margin: 14px 0 0;
+      font-size: 14px;
+    }
+
+    /* CONCLUSION */
+    .conclusion {
+      padding: 36px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 90% 20%, rgba(83, 216, 255, .12), transparent 30%),
+        linear-gradient(135deg, #141a37, #0d1020);
+      border: 1px solid rgba(112, 126, 255, .2);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: #060810;
+      padding: 35px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      font-weight: 800;
+      color: #eef0ff;
+    }
+
+    .footer-text {
+      color: #737b96;
+      font-size: 13px;
+      margin: 0;
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-panel {
+        min-height: 260px;
+      }
+
+      .map-nodes {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .map-line {
+        display: none;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .page {
+        padding: 0 16px;
+      }
+
+      .hero {
+        padding: 55px 0 65px;
+      }
+
+      .hero-text {
+        font-size: 16px;
+      }
+
+      .mode-grid,
+      .resource-links {
+        grid-template-columns: 1fr;
+      }
+
+      .map-nodes {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .section {
+        margin-bottom: 48px;
+      }
+
+      .conclusion,
+      .resource-panel {
+        padding: 24px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+
+</head>
+
+<body id="top">
+
+  <header class="hero">
+    <div class="page hero-grid">
+
+  <div>
+    <div class="eyebrow">
+      <span></span>
+      Inamorta Strategy Guide
+    </div>
+
+    <h1>
+      Stick War Legacy:
+      <strong>Campaign and Game Modes Explained</strong>
+    </h1>
+
+    <p class="hero-text">
+      Stick War: Legacy offers more than a traditional campaign. From the
+      story-driven rise of the Order Empire to weekly missions, tournaments,
+      and endless survival battles, each mode changes how you approach
+      resources, armies, objectives, and enemy pressure.
+    </p>
+
+    <div class="hero-tags">
+      <span>Classic Campaign</span>
+      <span>Missions</span>
+      <span>Tournament</span>
+      <span>Endless Deads</span>
+      <span>Normal / Hard / Insane</span>
+    </div>
+  </div>
+
+  <div class="logo-panel">
+    <div class="logo-card">
+      <img
+        src="https://www.maxgames.com/img/mobile/button_stickwar_selected.png?v=1"
+        alt="Stick War Legacy official game logo"
+      >
+    </div>
+  </div>
+
+</div>
+
+
+  </header>
+
+  <main>
+    <div class="page">
+
+
+  <div class="intro-box">
+    Stick War: Legacy is built around a simple but flexible idea:
+    create an army, manage gold, control units, and destroy the opposing
+    statue. What makes the game interesting is how that foundation is
+    reused across several modes. The objective may remain familiar, but
+    the pressure and decision-making can change considerably from one
+    mode to another.
+  </div>
+
+  <section class="section">
+    <div class="section-label">01 · The Story</div>
+    <h2>Understanding the Classic Campaign</h2>
+
+    <p>
+      The Classic Campaign is the natural starting point for understanding
+      Stick War: Legacy. The player leads the nation of Order in the world
+      of Inamorta, where different nations are strongly associated with
+      their own weapons and methods of warfare.
+    </p>
+
+    <p>
+      Order takes a different approach from the surrounding nations,
+      making the campaign a progression through increasingly difficult
+      conflicts. As you move forward, the game introduces different
+      battlefield situations and gives you opportunities to understand the
+      strengths of the units available to your army.
+    </p>
+
+    <p>
+      The campaign is therefore more than a sequence of battles. It works
+      as a practical introduction to the game's economy and combat loop:
+      miners gather gold, units are produced, formations are managed, and
+      the army must balance attacking the enemy with protecting its own
+      statue.
+    </p>
+
+    <div class="map">
+      <div class="map-line"></div>
+
+      <div class="map-nodes">
+        <div class="node">
+          <div class="node-icon">Ⅰ</div>
+          <h3>Order</h3>
+          <p>Begin your journey and establish your army.</p>
+        </div>
+
+        <div class="node">
+          <div class="node-icon">Ⅱ</div>
+          <h3>Expansion</h3>
+          <p>Face new opponents and learn different threats.</p>
+        </div>
+
+        <div class="node">
+          <div class="node-icon">Ⅲ</div>
+          <h3>Pressure</h3>
+          <p>Improve your economy and adapt your army.</p>
+        </div>
+
+        <div class="node">
+          <div class="node-icon">Ⅳ</div>
+          <h3>Victory</h3>
+          <p>Push through the final challenges.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">02 · Progression</div>
+    <h2>How Campaign Gameplay Works</h2>
+
+    <p>
+      Campaign battles revolve around several decisions happening at the
+      same time. Your economy determines how quickly you can build an army,
+      while your unit composition determines how effectively that army can
+      handle the opponent.
+    </p>
+
+    <p>
+      Mining too little can leave an army underdeveloped. Spending too
+      aggressively can also create problems if the enemy launches an early
+      attack. Good campaign play is therefore about finding a rhythm between
+      economic growth, defensive stability, and offensive pressure.
+    </p>
+
+    <p>
+      Unit control adds another layer. Players can command their army in
+      formations or directly control individual units. That flexibility
+      means a campaign battle can be approached differently depending on
+      the situation.
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Campaign Element</th>
+            <th>Purpose</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mining</td>
+            <td>Generate gold</td>
+            <td>Supports continuous army production.</td>
+          </tr>
+          <tr>
+            <td>Unit Production</td>
+            <td>Build your force</td>
+            <td>Determines available battlefield options.</td>
+          </tr>
+          <tr>
+            <td>Formation Control</td>
+            <td>Position your army</td>
+            <td>Helps organize attacks and defense.</td>
+          </tr>
+          <tr>
+            <td>Individual Control</td>
+            <td>Direct specific units</td>
+            <td>Useful when precise actions are required.</td>
+          </tr>
+          <tr>
+            <td>Statue Protection</td>
+            <td>Prevent defeat</td>
+            <td>Your army must balance offense with defense.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">03 · Modes</div>
+    <h2>The Main Stick War Legacy Game Modes</h2>
+
+    <p>
+      One of the strongest features of Stick War: Legacy is the variety of
+      ways to play. The official game listing highlights the Classic
+      Campaign alongside Missions, Endless Deads, and Tournament mode.
+      These modes use the same core strategy mechanics but give them very
+      different objectives.
+    </p>
+
+    <div class="mode-grid">
+
+      <article class="mode-card">
+        <div class="mode-number">MODE 01</div>
+        <h3>Classic Campaign</h3>
+        <p>
+          The story-focused experience where Order's journey through
+          Inamorta forms the central progression.
+        </p>
+        <ul>
+          <li>Story-driven progression</li>
+          <li>Traditional battlefield objectives</li>
+          <li>Introduces core mechanics</li>
+          <li>Includes bonus levels</li>
+        </ul>
+      </article>
+
+      <article class="mode-card">
+        <div class="mode-number">MODE 02</div>
+        <h3>Missions Mode</h3>
+        <p>
+          Missions introduce special conditions and objectives that can
+          require a different approach from standard campaign battles.
+        </p>
+        <ul>
+          <li>New missions are added regularly</li>
+          <li>Saga-style map structure</li>
+          <li>Multiple rewards</li>
+          <li>Normal, Hard, and Insane difficulties</li>
+        </ul>
+      </article>
+
+      <article class="mode-card">
+        <div class="mode-number">MODE 03</div>
+        <h3>Tournament Mode</h3>
+        <p>
+          Tournament mode changes the experience into a competitive
+          progression against AI challengers, with the Crown of Inamorta
+          as the ultimate prize.
+        </p>
+        <ul>
+          <li>Multiple AI opponents</li>
+          <li>Progressive battles</li>
+          <li>Different battle formats</li>
+          <li>Crown of Inamorta objective</li>
+        </ul>
+      </article>
+
+      <article class="mode-card">
+        <div class="mode-number">MODE 04</div>
+        <h3>Endless Deads</h3>
+        <p>
+          Instead of progressing through a conventional campaign, this
+          mode focuses on surviving increasingly difficult waves of Deads.
+        </p>
+        <ul>
+          <li>Wave-based survival</li>
+          <li>Focus on defense</li>
+          <li>Upgrade opportunities between waves</li>
+          <li>Goal is to survive as long as possible</li>
+        </ul>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">04 · Missions</div>
+    <h2>Why Missions Feel Different</h2>
+
+    <p>
+      Missions Mode is designed to break the routine of standard battles.
+      Instead of expecting every match to follow the same pattern, the
+      game introduces special conditions that can change how players think
+      about their army.
+    </p>
+
+    <p>
+      The official listing mentions examples such as winning before sunset,
+      Triple Barricaded Gold, Deathmatch, Forward Statue, and battles
+      against mini bosses. These conditions make missions useful for
+      players who want challenges beyond the standard campaign formula.
+    </p>
+
+    <p>
+      Missions also use a saga-style map with rewards and difficulty
+      progression. This gives the mode a sense of ongoing progression while
+      encouraging players to experiment with different approaches instead
+      of relying on one army composition for every battle.
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">05 · Tournament</div>
+    <h2>Understanding Tournament Mode</h2>
+
+    <p>
+      Tournament Mode focuses on a sequence of battles against AI
+      challengers. Rather than simply moving through the campaign story,
+      the goal is to overcome opponent after opponent and eventually claim
+      the Crown of Inamorta.
+    </p>
+
+    <p>
+      This format rewards consistency. A strategy that works for one enemy
+      may not be equally effective against the next challenger, so players
+      need to observe how the opposing army behaves and adjust their
+      production choices accordingly.
+    </p>
+
+    <p>
+      Tournament battles are particularly useful for testing whether you
+      understand the game's core systems. Economy, unit selection,
+      defensive timing, and offensive pressure all become important because
+      every battle asks you to make decisions under different circumstances.
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">06 · Survival</div>
+    <h2>What Makes Endless Deads Special?</h2>
+
+    <p>
+      Endless Deads takes the basic Stick War formula and turns it into a
+      survival challenge. Instead of simply defeating an opponent and
+      moving to the next campaign stage, your objective is to withstand
+      continuous waves of enemies.
+    </p>
+
+    <p>
+      This changes the value of defensive decisions. A strong army is
+      important, but maintaining enough defensive strength to survive the
+      next wave is equally important. Rushing forward without considering
+      the next attack can create problems later.
+    </p>
+
+    <p>
+      The mode also gives players opportunities to improve their setup
+      between waves. That creates a useful cycle: survive, evaluate the
+      weakness in your defense, invest in improvements, and prepare for the
+      next wave.
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">07 · Difficulty</div>
+    <h2>Normal, Hard, and Insane Difficulties</h2>
+
+    <p>
+      Difficulty changes how demanding a battle feels and gives experienced
+      players an additional reason to replay content. The current game
+      listing identifies Normal, Hard, and Insane difficulty levels for
+      Missions, with crowns available for each difficulty.
+    </p>
+
+    <p>
+      Higher difficulty should be approached as a strategy challenge
+      rather than simply a test of speed. Players may need to improve
+      resource management, reduce unnecessary losses, and pay closer
+      attention to enemy behavior.
+    </p>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <h3>Learn on Normal</h3>
+          <p>
+            Use the lower difficulty to understand objectives, enemy
+            patterns, and the resources needed for each situation.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <h3>Refine on Hard</h3>
+          <p>
+            Reduce wasted resources and improve the timing of production,
+            attacks, and defensive responses.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <h3>Challenge Insane</h3>
+          <p>
+            Treat every decision as important and build a plan around the
+            specific mission objective rather than using one universal
+            strategy.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">08 · Choosing a Mode</div>
+    <h2>Which Game Mode Should You Play?</h2>
+
+    <p>
+      There is no single best mode for every player. The right choice
+      depends on what you want from a session. The campaign is ideal for
+      structured progression, Missions are useful when you want unusual
+      objectives, Tournament provides repeated AI battles, and Endless
+      Deads focuses on long-term survival.
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>If You Want...</th>
+            <th>Recommended Mode</th>
+            <th>Main Focus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A structured journey</td>
+            <td>Classic Campaign</td>
+            <td>Progression and story</td>
+          </tr>
+          <tr>
+            <td>Unusual objectives</td>
+            <td>Missions</td>
+            <td>Special conditions</td>
+          </tr>
+          <tr>
+            <td>Repeated AI battles</td>
+            <td>Tournament</td>
+            <td>Adaptation and consistency</td>
+          </tr>
+          <tr>
+            <td>Long survival sessions</td>
+            <td>Endless Deads</td>
+            <td>Defense and endurance</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">09 · Strategy</div>
+    <h2>How to Approach Different Modes</h2>
+
+    <p>
+      Although the modes share the same foundation, switching between them
+      requires a change in mindset. A campaign level rewards progression,
+      while Endless Deads rewards preparation for what comes next.
+    </p>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">A</div>
+        <div>
+          <h3>Identify the Objective</h3>
+          <p>
+            Before spending gold, determine whether the battle is asking
+            you to destroy a statue, survive waves, defeat a special enemy,
+            or complete another condition.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">B</div>
+        <div>
+          <h3>Build Around the Situation</h3>
+          <p>
+            Avoid producing units simply because they are familiar. Choose
+            a composition that makes sense for the enemy and the objective.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">C</div>
+        <div>
+          <h3>Protect Your Economy</h3>
+          <p>
+            Gold is the foundation of your army. Losing economic momentum
+            can make it difficult to replace units or respond to pressure.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">D</div>
+        <div>
+          <h3>Review the Battle</h3>
+          <p>
+            If an attempt fails, look at what caused the problem. Was the
+            army too small, the attack too early, or the defense too weak?
+            Correcting one weakness can dramatically improve the next run.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">10 · Helpful Resources</div>
+    <h2>Continue Learning Stick War Legacy Strategy</h2>
+
+    <p>
+      Players who want to explore tactics beyond the campaign and modes
+      can use dedicated strategy resources for additional ideas about
+      battles, unit management, and decision-making.
+    </p>
+
+    <div class="resource-panel">
+      <h3>Strategy Resources</h3>
+
+      <div class="resource-links">
+
+        <a class="resource-link"
+           href="http://stickwarlegacy.app/"
+           target="_blank"
+           rel="noopener">
+          http://stickwarlegacy.app/
+        </a>
+
+        <a class="resource-link"
+           href="https://stick-war-strategy.pages.dev/"
+           target="_blank"
+           rel="noopener">
+          Stick War Legacy Strategy Guide
+        </a>
+
+        <a class="resource-link"
+           href="https://marios-46.github.io/stick-war-battle-tips/"
+           target="_blank"
+           rel="noopener">
+          Stick War Legacy Battle Tips
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">11 · FAQ</div>
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+
+      <details>
+        <summary>What is the Classic Campaign in Stick War Legacy?</summary>
+        <p>
+          Classic Campaign is the main story-focused mode where players
+          lead Order through conflicts in the world of Inamorta. The
+          campaign teaches the game's core economy and combat systems while
+          progressing through battles.
+        </p>
+      </details>
+
+      <details>
+        <summary>What is Missions Mode?</summary>
+        <p>
+          Missions Mode provides additional challenges with special
+          objectives and conditions. The game listing describes a
+          saga-style map, multiple rewards, and Normal, Hard, and Insane
+          difficulty levels.
+        </p>
+      </details>
+
+      <details>
+        <summary>What is Endless Deads?</summary>
+        <p>
+          Endless Deads is a zombie-style survival mode where players face
+          waves of Deads and attempt to survive for as long as possible.
+        </p>
+      </details>
+
+      <details>
+        <summary>What is Tournament Mode?</summary>
+        <p>
+          Tournament Mode puts the player against a series of AI
+          challengers. The objective is to progress through the tournament
+          and win the Crown of Inamorta.
+        </p>
+      </details>
+
+      <details>
+        <summary>Does every mode use the same basic strategy?</summary>
+        <p>
+          The core mechanics remain related, but the best approach changes.
+          Campaign battles emphasize progression, Missions can introduce
+          unusual conditions, Tournament emphasizes adaptation, and
+          Endless Deads places greater emphasis on survival and defense.
+        </p>
+      </details>
+
+      <details>
+        <summary>Why is gold important in Stick War Legacy?</summary>
+        <p>
+          Gold supports unit production and therefore affects how quickly
+          you can build and replace your army. Good economic management is
+          an important part of maintaining battlefield pressure.
+        </p>
+      </details>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="conclusion">
+      <div class="section-label">Final Thoughts</div>
+      <h2>More Than Just a Campaign</h2>
+
+      <p>
+        Stick War: Legacy has a straightforward strategic foundation, but
+        its collection of game modes gives that foundation plenty of
+        variety. The Classic Campaign provides a structured introduction
+        to Order and the world of Inamorta, while Missions expand the
+        formula with special conditions and additional challenges.
+      </p>
+
+      <p>
+        Tournament Mode changes the focus toward repeated battles against
+        AI opponents, making adaptation especially important. Endless
+        Deads takes another direction by asking players to defend against
+        continuous waves and make smart decisions between attacks.
+      </p>
+
+      <p>
+        Together, these modes give Stick War: Legacy a flexible gameplay
+        loop. Whether you prefer story progression, unusual objectives,
+        tournament battles, or survival challenges, understanding the
+        purpose of each mode makes it easier to choose the right strategy
+        and get more from every battle.
+      </p>
+    </div>
+  </section>
+
+</div>
+
+
+  </main>
+
+  <footer>
+    <div class="page footer-inner">
+      <div class="footer-brand">Stick War Legacy Guide</div>
+      <p class="footer-text">
+        Informational content for players exploring Stick War: Legacy.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
